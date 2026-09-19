@@ -1,0 +1,737 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Errica Nianiakoudi-Cohen — Biologist &amp; Biomedical AI</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,400&family=Source+Sans+3:wght@400;500;600;700&display=swap">
+<style>
+  body { margin: 0; background: #FAF7F1; font-family: 'Source Sans 3', sans-serif; color: #202A24; }
+  a { color: #2C6E5C; text-decoration: none; border-bottom: 1px solid rgba(44,110,92,0.35); }
+  a:hover { color: #1B463A; border-bottom-color: #1B463A; }
+  * { box-sizing: border-box; }
+  img { max-width: 100%; }
+  .cv-eyebrow { text-transform: uppercase; letter-spacing: 0.14em; font-weight: 600; }
+  .cv-navlink { color: #E9F1EC; border-bottom: none; font-size: 13.5px; font-weight: 500; }
+  .cv-navlink:hover { color: #FBF6EC; border-bottom: 1px solid rgba(251,246,236,0.5); }
+  .cv-chip { display: inline-flex; align-items: center; padding: 7px 14px; border: 1px solid rgba(27,70,58,0.28); border-radius: 999px; font-size: 13.5px; color: #2C382F; background: #FFFFFF; }
+  .cv-btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; border-radius: 4px; font-size: 15px; font-weight: 600; border-bottom: none; }
+  .cv-pin { border-bottom: none; }
+  .cv-pin:hover .cv-pin-dot { transform: scale(1.15); }
+  .cv-pin-dot { transition: transform 0.15s ease; }
+  @keyframes cv-helix-spin { 0%, 100% { transform: translateX(0) scale(1); opacity: 0.8; } 50% { transform: translateX(calc(0.55 * (100px - var(--nx)))) scale(0.78); opacity: 0.55; } }
+  .cv-helix-node { position: absolute; border-radius: 50%; mix-blend-mode: screen; filter: blur(0.6px); animation: cv-helix-spin 7.5s cubic-bezier(0.45,0,0.55,1) infinite; }
+  @keyframes cv-pulse-ring { 0% { transform: scale(0.85); opacity: 0.55; } 100% { transform: scale(1.6); opacity: 0; } }
+  .cv-pulse { animation: cv-pulse-ring 2.6s ease-out infinite; transform-origin: center; }
+  @keyframes cv-pop-in { from { opacity: 0; transform: translateY(8px) scale(0.94); } to { opacity: 1; transform: translateY(0) scale(1); } }
+  @keyframes cv-pop-out { from { opacity: 1; transform: translateY(0) scale(1); } to { opacity: 0; transform: translateY(6px) scale(0.94); } }
+  .cv-popcard { animation: cv-pop-in 0.22s ease-out forwards; transform-origin: bottom left; }
+  .cv-popcard.cv-pop-out { animation: cv-pop-out 0.18s ease-in forwards; }
+  .cv-popcard-wrap { display: none; }
+  .cv-chip { transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease; }
+  .cv-chip:hover { background: #1B463A; color: #FFFFFF; border-color: #1B463A; transform: translateY(-3px); box-shadow: 0 8px 16px rgba(27,70,58,0.28); cursor: default; }
+  @keyframes cv-rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  .cv-skill-card, .cv-lang-badge { animation: cv-rise 0.7s cubic-bezier(0.2,0.7,0.3,1) both; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+  .cv-skill-card:hover { transform: translateY(-4px); box-shadow: 0 14px 26px rgba(27,70,58,0.14); }
+  .cv-lang-badge:hover { transform: translateY(-3px); box-shadow: 0 10px 18px rgba(27,70,58,0.12); }
+  .cv-toast { animation: cv-pop-in 0.18s ease-out both; display: none; }
+  .cv-toast.cv-toast-show { display: inline-block; }
+  @keyframes cv-icon-breathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1) rotate(3deg); } }
+  .cv-skill-icon { animation: cv-icon-breathe 3.6s ease-in-out infinite; transition: transform 0.25s ease; }
+  .cv-skill-card:hover .cv-skill-icon { animation-play-state: paused; transform: rotate(-8deg) scale(1.18); }
+  .cv-chip { opacity: 0; animation: cv-rise 0.5s ease-out forwards; }
+  .cv-skill-card:nth-child(1) .cv-chip:nth-child(1) { animation-delay: 0.35s; } .cv-skill-card:nth-child(1) .cv-chip:nth-child(2) { animation-delay: 0.4s; } .cv-skill-card:nth-child(1) .cv-chip:nth-child(3) { animation-delay: 0.45s; } .cv-skill-card:nth-child(1) .cv-chip:nth-child(4) { animation-delay: 0.5s; } .cv-skill-card:nth-child(1) .cv-chip:nth-child(5) { animation-delay: 0.55s; }
+  .cv-skill-card:nth-child(2) .cv-chip:nth-child(1) { animation-delay: 0.45s; } .cv-skill-card:nth-child(2) .cv-chip:nth-child(2) { animation-delay: 0.5s; } .cv-skill-card:nth-child(2) .cv-chip:nth-child(3) { animation-delay: 0.55s; } .cv-skill-card:nth-child(2) .cv-chip:nth-child(4) { animation-delay: 0.6s; } .cv-skill-card:nth-child(2) .cv-chip:nth-child(5) { animation-delay: 0.65s; }
+  .cv-skill-card:nth-child(3) .cv-chip:nth-child(1) { animation-delay: 0.55s; } .cv-skill-card:nth-child(3) .cv-chip:nth-child(2) { animation-delay: 0.6s; } .cv-skill-card:nth-child(3) .cv-chip:nth-child(3) { animation-delay: 0.65s; } .cv-skill-card:nth-child(3) .cv-chip:nth-child(4) { animation-delay: 0.7s; } .cv-skill-card:nth-child(3) .cv-chip:nth-child(5) { animation-delay: 0.75s; } .cv-skill-card:nth-child(3) .cv-chip:nth-child(6) { animation-delay: 0.8s; } .cv-skill-card:nth-child(3) .cv-chip:nth-child(7) { animation-delay: 0.85s; }
+  .cv-hero-photo-mobile { display: none; }
+  @media (max-width: 760px) {
+    .cv-pad { padding-left: 20px !important; padding-right: 20px !important; }
+    nav .cv-pad { height: 64px !important; }
+    .cv-hamburger { display: flex !important; align-items: center; justify-content: center; }
+    .cv-nav-links { display: none !important; }
+    .cv-nav-links.cv-nav-open { display: flex !important; position: absolute; top: 64px; left: 0; right: 0; flex-direction: column; align-items: flex-start !important; background: #1B463A; padding: 18px 20px 22px; gap: 14px !important; box-shadow: 0 12px 24px rgba(0,0,0,0.25); border-bottom: 1px solid rgba(0,0,0,0.15); }
+    .cv-nav-open .cv-navlink { font-size: 14px !important; }
+    .cv-navlink { font-size: 12px !important; }
+    .cv-hero-grid { grid-template-columns: 1fr !important; gap: 32px !important; padding-top: 48px !important; padding-bottom: 48px !important; }
+    .cv-hero-h1 { font-size: 34px !important; }
+    .cv-hero-photo { width: 200px !important; height: 200px !important; }
+    .cv-hero-photo-wrap { display: none !important; }
+    .cv-hero-text { padding-right: 150px; }
+    .cv-hero-name-row { display: block; }
+    .cv-hero-photo-mobile { display: block !important; position: absolute; top: 20px; right: 20px; width: 128px; height: 128px; border-radius: 14px; object-fit: cover; flex-shrink: 0; border: 3px solid rgba(251,246,236,0.3); box-shadow: 0 10px 22px rgba(0,0,0,0.3); z-index: 2; }
+    .cv-eyebrow-break { display: block; height: 4px; }
+    .cv-helix-wrap { display: none !important; }
+    .cv-about-grid { grid-template-columns: 1fr !important; gap: 28px !important; }
+    .cv-h2 { font-size: 25px !important; }
+    .cv-row { grid-template-columns: 1fr !important; gap: 4px !important; }
+    .cv-exp-grid { grid-template-columns: 14px minmax(0,1fr) !important; gap: 14px !important; }
+    .cv-projects-grid { grid-template-columns: 1fr !important; }
+    .cv-projects-side { border-left: none !important; padding-left: 0 !important; margin-top: 24px !important; border-top: 1px solid rgba(27,70,58,0.15) !important; padding-top: 24px !important; }
+    .cv-skills-grid { grid-template-columns: 1fr !important; }
+    .cv-popcard-wrap { left: 50% !important; top: auto !important; bottom: 6px !important; transform: translateX(-50%) !important; width: min(260px, calc(100vw - 48px)) !important; }
+    #popup-thessaloniki.cv-popcard-wrap { bottom: 160px !important; }
+  }
+</style>
+</head>
+<body>
+
+<div style="width: 100%; min-height: 100vh; background: #FAF7F1; display: flex; flex-direction: column; align-items: center;">
+
+  <!-- STICKY NAV -->
+  <nav style="width: 100%; box-sizing: border-box; position: sticky; top: 0; z-index: 20; background: #1B463A; border-bottom: 1px solid rgba(0,0,0,0.12);">
+    <div class="cv-pad" style="max-width: 1120px; margin: 0 auto; box-sizing: border-box; padding: 0 40px; height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 16px;">
+      <a href="#home" style="border-bottom: none; font-family: 'Fraunces', serif; font-size: 17px; font-weight: 500; color: #FBF6EC; flex-shrink: 0;">Errica N.C.</a>
+      <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap; justify-content: flex-end; flex: 1;">
+        <div class="cv-nav-links" id="navLinks" style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap; justify-content: flex-end;">
+          <a class="cv-navlink" href="#about" onclick="closeMenu()">About</a>
+          <a class="cv-navlink" href="#journey" onclick="closeMenu()">Scientific Journey</a>
+          <a class="cv-navlink" href="#experience" onclick="closeMenu()">Research</a>
+          <a class="cv-navlink" href="#education" onclick="closeMenu()">Education</a>
+          <a class="cv-navlink" href="#projects" onclick="closeMenu()">Projects</a>
+          <a class="cv-navlink" href="#awards" onclick="closeMenu()">Awards</a>
+          <a class="cv-navlink" href="#skills" onclick="closeMenu()">Skills</a>
+          <a class="cv-navlink" href="#contact" onclick="closeMenu()">Contact</a>
+        </div>
+        <a href="Errica-Nianiakoudi-Cohen-CV.pdf" download style="text-decoration: none; display: inline-flex; align-items: center; gap: 6px; font-size: 13.5px; font-weight: 600; color: #1B463A; background: #FBF6EC; padding: 8px 14px; border-radius: 999px; box-sizing: border-box; white-space: nowrap; border-bottom: none; flex-shrink: 0;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#1B463A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"></path><path d="M7 10l5 5 5-5"></path><path d="M4 20h16"></path></svg>
+          Download CV
+        </a>
+        <button type="button" class="cv-hamburger" onclick="toggleMenu()" aria-label="Toggle menu" style="all: unset; display: none; cursor: pointer; padding: 6px; flex-shrink: 0;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FBF6EC" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HOME / HERO -->
+  <header id="home" style="width: 100%; box-sizing: border-box; background: #1B463A; color: #FBF6EC; position: relative; overflow: hidden;">
+    <div class="cv-pad cv-hero-grid" style="max-width: 1120px; margin: 0 auto; box-sizing: border-box; padding: 72px 40px 80px; display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 56px; align-items: center; position: relative; z-index: 1;">
+      <div class="cv-hero-text" style="display: flex; flex-direction: column; gap: 20px;">
+        <p class="cv-eyebrow" style="margin: 0; font-size: 13px; color: #CFE3DA;">Biologist ·<span class="cv-eyebrow-break"> </span>Molecular Biomedicine ·<span class="cv-eyebrow-break"> </span>Biomedical AI</p>
+        <div class="cv-hero-name-row">
+          <h1 class="cv-hero-h1" style="margin: 0; font-family: 'Fraunces', serif; font-weight: 500; font-size: 50px; line-height: 1.12; letter-spacing: -0.01em;">Errica <span style="font-weight: 400">Nianiakoudi&#8209;Cohen</span></h1>
+          <img class="cv-hero-photo-mobile" src="assets/portrait.jpeg" alt="Portrait of Errica Nianiakoudi-Cohen">
+        </div>
+        <h2 style="margin: 0; font-family: 'Fraunces', serif; font-weight: 400; font-style: italic; font-size: 20px; color: #D8E8DF; max-width: 560px;">From the bench to biomedical AI, building toward biotech &amp; pharma</h2>
+        <p style="margin: 0; font-size: 16.5px; line-height: 1.7; color: #E9F1EC; max-width: 600px;">Biologist and MSc candidate in Molecular Biomedicine with hands-on research in neurogenetics and autoimmunity, now extending that foundation into AI-driven clinical decision support and digital health.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px;">
+          <span class="cv-chip" style="background: rgba(251,246,236,0.08); border-color: rgba(251,246,236,0.35); color: #E9F1EC;">Autoimmunity Research</span>
+          <span class="cv-chip" style="background: rgba(251,246,236,0.08); border-color: rgba(251,246,236,0.35); color: #E9F1EC;">Neurogenetics</span>
+          <span class="cv-chip" style="background: rgba(251,246,236,0.08); border-color: rgba(251,246,236,0.35); color: #E9F1EC;">Biomedical AI</span>
+          <span class="cv-chip" style="background: rgba(251,246,236,0.08); border-color: rgba(251,246,236,0.35); color: #E9F1EC;">Gene Therapy</span>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 14px; margin-top: 10px;">
+          <span style="position: relative; display: inline-flex;">
+            <a class="cv-btn" href="mailto:erricanc@gmail.com" onclick="copyEmail(event)" style="background: #FBF6EC; color: #1B463A;">Email</a>
+            <span class="cv-toast" style="position: absolute; left: 50%; bottom: calc(100% + 10px); transform: translateX(-50%); white-space: nowrap; background: #1B463A; color: #FBF6EC; font-size: 12.5px; font-weight: 500; padding: 7px 12px; border-radius: 6px; box-shadow: 0 8px 16px rgba(0,0,0,0.25); pointer-events: none;">Email copied — erricanc@gmail.com</span>
+          </span>
+          <a class="cv-btn" href="https://linkedin.com/in/errica-nianiakoudi-cohen" target="_blank" rel="noopener" style="background: transparent; color: #FBF6EC; border: 1px solid rgba(251,246,236,0.5);">LinkedIn</a>
+        </div>
+      </div>
+      <div class="cv-hero-photo-wrap" style="justify-self: center; position: relative;">
+        <div class="cv-helix-wrap" style="position: absolute; left: 102%; top: 50%; width: 200px; height: 384px; transform: translate(-50%,-50%) scale(1.9); z-index: 0; pointer-events: none;">
+          <svg width="100%" height="100%" viewBox="0 0 200 384" style="position: absolute; inset: 0; overflow: visible;">
+            <path d="M60,0 C60,32 140,32 140,64 C140,96 60,96 60,128 C60,160 140,160 140,192 C140,224 60,224 60,256 C60,288 140,288 140,320 C140,352 60,352 60,384" fill="none" stroke="#FBF6EC" stroke-width="1.5" stroke-linecap="round" opacity="0.22"></path>
+            <path d="M140,0 C140,32 60,32 60,64 C60,96 140,96 140,128 C140,160 60,160 60,192 C60,224 140,224 140,256 C140,288 60,288 60,320 C60,352 140,352 140,384" fill="none" stroke="#FBF6EC" stroke-width="1.5" stroke-linecap="round" opacity="0.22"></path>
+          </svg>
+          <span class="cv-helix-node" style="margin-left: -22px; margin-top: -22px; --nx: 60px; left: 60px; top: 24px; width: 44px; height: 44px; background: #3FBFAE; animation-delay: 0s;"></span>
+          <span class="cv-helix-node" style="margin-left: -17px; margin-top: -17px; --nx: 140px; left: 140px; top: 24px; width: 34px; height: 34px; background: #B7BFB9; animation-delay: 0s;"></span>
+          <span class="cv-helix-node" style="margin-left: -14px; margin-top: -14px; --nx: 60px; left: 60px; top: 88px; width: 28px; height: 28px; background: #AEB8B4; animation-delay: 0.35s;"></span>
+          <span class="cv-helix-node" style="margin-left: -25px; margin-top: -25px; --nx: 140px; left: 140px; top: 88px; width: 50px; height: 50px; background: #1F6F63; animation-delay: 0.35s;"></span>
+          <span class="cv-helix-node" style="margin-left: -19px; margin-top: -19px; --nx: 60px; left: 60px; top: 152px; width: 38px; height: 38px; background: #C33763; animation-delay: 0.7s;"></span>
+          <span class="cv-helix-node" style="margin-left: -15px; margin-top: -15px; --nx: 140px; left: 140px; top: 152px; width: 30px; height: 30px; background: #3FBFAE; animation-delay: 0.7s;"></span>
+          <span class="cv-helix-node" style="margin-left: -23px; margin-top: -23px; --nx: 60px; left: 60px; top: 216px; width: 46px; height: 46px; background: #9B5A72; animation-delay: 1.05s;"></span>
+          <span class="cv-helix-node" style="margin-left: -14px; margin-top: -14px; --nx: 140px; left: 140px; top: 216px; width: 28px; height: 28px; background: #AEB8B4; animation-delay: 1.05s;"></span>
+          <span class="cv-helix-node" style="margin-left: -16px; margin-top: -16px; --nx: 60px; left: 60px; top: 280px; width: 32px; height: 32px; background: #1F6F63; animation-delay: 1.4s;"></span>
+          <span class="cv-helix-node" style="margin-left: -24px; margin-top: -24px; --nx: 140px; left: 140px; top: 280px; width: 48px; height: 48px; background: #B7BFB9; animation-delay: 1.4s;"></span>
+          <span class="cv-helix-node" style="margin-left: -20px; margin-top: -20px; --nx: 60px; left: 60px; top: 344px; width: 40px; height: 40px; background: #3FBFAE; animation-delay: 1.75s;"></span>
+          <span class="cv-helix-node" style="margin-left: -16px; margin-top: -16px; --nx: 140px; left: 140px; top: 344px; width: 32px; height: 32px; background: #9B5A72; animation-delay: 1.75s;"></span>
+        </div>
+        <img class="cv-hero-photo" src="assets/portrait.jpeg" alt="Portrait of Errica Nianiakoudi-Cohen" style="position: relative; z-index: 1; width: 280px; height: 280px; object-fit: cover; border-radius: 12px; border: 4px solid rgba(251,246,236,0.18); box-shadow: 0 18px 40px rgba(0,0,0,0.25);">
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about" class="cv-pad" style="width: 100%; box-sizing: border-box; max-width: 1120px; padding: 80px 40px 0;">
+    <p class="cv-eyebrow" style="margin: 0 0 10px; font-size: 12.5px; color: #1B463A;">About</p>
+    <h2 class="cv-h2" style="margin: 0 0 28px; font-family: 'Fraunces', serif; font-weight: 500; font-size: 32px; color: #1B463A; max-width: 640px;">Where molecular biology meets biomedical AI</h2>
+    <div class="cv-about-grid" style="display: grid; grid-template-columns: minmax(0,1.3fr) minmax(0,1fr); gap: 48px; align-items: start;">
+      <p style="margin: 0; font-size: 17.5px; line-height: 1.75; color: #2C382F; text-align: justify">Biologist and MSc candidate in Molecular Biomedicine with a strong foundation in biomedical research and hands-on laboratory experience in neurogenetics and translational autoimmunity research. Alongside bench work, I'm building experience at the intersection of biology and artificial intelligence, using computational and machine-learning methods to turn biological and clinical data into interpretable insight. I'm particularly interested in applying scientific knowledge beyond the laboratory, within the pharmaceutical and biotechnology industry, at the intersection of science, innovation and business.</p>
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <div style="border: 1px solid rgba(27,70,58,0.18); border-radius: 6px; padding: 20px; background: #FFFFFF; display: flex; flex-direction: column; gap: 8px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1B463A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V8l8-5 8 5v13"></path><path d="M9 21v-7h6v7"></path></svg>
+          <p style="margin: 0; font-family: 'Fraunces', serif; font-size: 14.5px; font-weight: 500; color: #202A24;">Current Institution</p>
+          <p style="margin: 0; font-size: 13.5px; color: #5A6A5F; line-height: 1.5;">Medical School, NKUA &amp; BSRC "Alexander Fleming"</p>
+          <a href="https://www.google.com/maps/search/?api=1&query=BSRC+Alexander+Fleming,+Vari,+Greece" target="_blank" rel="noopener" style="margin-top: 4px; display: inline-flex; align-items: center; gap: 5px; font-size: 12.5px; font-weight: 600; color: #1B463A; border-bottom: none;">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#1B463A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            View on map
+          </a>
+        </div>
+        <div style="border: 1px solid rgba(27,70,58,0.18); border-radius: 6px; padding: 20px; background: #FFFFFF; display: flex; flex-direction: column; gap: 8px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1B463A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10"></path><path d="M11 20V4"></path><path d="M18 20v-7"></path><path d="M2 20h20"></path></svg>
+          <p style="margin: 0; font-family: 'Fraunces', serif; font-size: 14.5px; font-weight: 500; color: #202A24;">Computational Tools</p>
+          <p style="margin: 0; font-size: 13.5px; color: #5A6A5F; line-height: 1.5;">Python, R, ImageJ / FIJI</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCIENTIFIC JOURNEY -->
+  <section id="journey" class="cv-pad" style="width: 100%; box-sizing: border-box; max-width: 1120px; padding: 88px 40px 0;">
+    <p class="cv-eyebrow" style="margin: 0 0 10px; font-size: 12.5px; color: #1B463A;">Greece, Mapped</p>
+    <h2 class="cv-h2" style="margin: 0 0 12px; font-family: 'Fraunces', serif; font-weight: 500; font-size: 32px; color: #1B463A;">My Scientific Journey</h2>
+    <p style="margin: 0 0 12px; font-size: 16px; color: #5A6A5F; max-width: 620px;">Two cities, two chapters of training — hover a pin to see what happened there.</p>
+
+    <div style="position: relative; width: min(560px, 100%); aspect-ratio: 966 / 978; margin: 0 auto; overflow: visible;">
+      <img src="assets/greece-map.png" alt="Hand-sketched outline map of Greece" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain;">
+      <p style="position: absolute; right: 20px; bottom: 14px; margin: 0; font-family: 'Fraunces', serif; font-style: italic; font-size: 15px; letter-spacing: 0.04em; color: rgba(27,70,58,0.32);">Greece</p>
+
+      <button type="button" class="cv-pin" onmouseenter="hoverOpen('thessaloniki')" onmouseleave="hoverLeave()" onclick="togglePopup('thessaloniki')" aria-label="Thessaloniki — show institutions" style="all: unset; cursor: pointer; position: absolute; left: 39.5%; top: 25.5%; transform: translate(-50%,-100%); display: flex; flex-direction: column; align-items: center; text-align: center; z-index: 2;">
+        <span style="position: relative; width: 34px; height: 42px; display: block;">
+          <svg class="cv-pulse" width="34" height="42" viewBox="0 0 30 38" style="position: absolute; inset: 0;"><circle cx="15" cy="15" r="9" fill="#1B463A" opacity="0.5"></circle></svg>
+          <svg class="cv-pin-dot" width="34" height="42" viewBox="0 0 30 38" fill="none" style="position: absolute; inset: 0;"><path d="M15 0C6.7 0 0 6.7 0 15c0 10.5 15 23 15 23s15-12.5 15-23C30 6.7 23.3 0 15 0z" fill="#1B463A"></path><circle cx="15" cy="15" r="6" fill="#FAF7F1"></circle></svg>
+        </span>
+        <span style="margin-top: 6px; font-size: 13px; font-weight: 600; color: #1B463A; background: #FBF6EC; padding: 3px 10px; border-radius: 999px; border: 1px solid rgba(27,70,58,0.2);">Thessaloniki</span>
+      </button>
+
+      <button type="button" class="cv-pin" onmouseenter="hoverOpen('athens')" onmouseleave="hoverLeave()" onclick="togglePopup('athens')" aria-label="Athens — show institutions" style="all: unset; cursor: pointer; position: absolute; left: 48%; top: 61%; transform: translate(-50%,-100%); display: flex; flex-direction: column; align-items: center; text-align: center; z-index: 2;">
+        <span style="position: relative; width: 34px; height: 42px; display: block;">
+          <svg class="cv-pulse" width="34" height="42" viewBox="0 0 30 38" style="position: absolute; inset: 0;"><circle cx="15" cy="15" r="9" fill="#1B463A" opacity="0.5"></circle></svg>
+          <svg class="cv-pin-dot" width="34" height="42" viewBox="0 0 30 38" fill="none" style="position: absolute; inset: 0;"><path d="M15 0C6.7 0 0 6.7 0 15c0 10.5 15 23 15 23s15-12.5 15-23C30 6.7 23.3 0 15 0z" fill="#1B463A"></path><circle cx="15" cy="15" r="6" fill="#FAF7F1"></circle></svg>
+        </span>
+        <span style="margin-top: 6px; font-size: 13px; font-weight: 600; color: #1B463A; background: #FBF6EC; padding: 3px 10px; border-radius: 999px; border: 1px solid rgba(27,70,58,0.2);">Athens</span>
+      </button>
+
+      <div id="popup-thessaloniki" class="cv-popcard-wrap" onmouseenter="if(hasHover())cancelClose()" onmouseleave="hoverLeave()" style="position: absolute; left: 39.5%; top: 25.5%; transform: translate(6px, calc(-100% - 20px)); z-index: 3; width: 248px;">
+        <div class="cv-popcard" style="position: relative; background: #FFFFFF; border-radius: 12px; overflow: hidden; box-shadow: 0 18px 36px rgba(20,40,32,0.22); text-align: left;">
+          <div style="height: 6px; background: linear-gradient(90deg, #1B463A, #7BAE9B);"></div>
+          <div style="padding: 18px 20px 20px;">
+            <button type="button" onclick="scheduleClose()" aria-label="Close" style="all: unset; cursor: pointer; position: absolute; top: 14px; right: 14px; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; border-radius: 50%; color: #8A968D; font-size: 13px; line-height: 1;">✕</button>
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px; padding-right: 18px;">
+              <svg width="15" height="15" viewBox="0 0 30 38" fill="none" style="flex-shrink: 0;"><path d="M15 0C6.7 0 0 6.7 0 15c0 10.5 15 23 15 23s15-12.5 15-23C30 6.7 23.3 0 15 0z" fill="#1B463A"></path><circle cx="15" cy="15" r="6" fill="#FFFFFF"></circle></svg>
+              <p style="margin: 0; font-family: 'Fraunces', serif; font-weight: 500; font-size: 17px; color: #1B463A;">Thessaloniki</p>
+            </div>
+            <p class="cv-eyebrow" style="margin: 0 0 12px; font-size: 10.5px; color: #8A968D;">Chapter One</p>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <div style="display: flex; align-items: flex-start; gap: 9px;"><span style="width: 5px; height: 5px; border-radius: 50%; background: #1B463A; margin-top: 7px; flex-shrink: 0;"></span><span style="font-size: 13.5px; line-height: 1.55; color: #3D4A41;">Aristotle University of Thessaloniki</span></div>
+              <div style="display: flex; align-items: flex-start; gap: 9px;"><span style="width: 5px; height: 5px; border-radius: 50%; background: #1B463A; margin-top: 7px; flex-shrink: 0;"></span><span style="font-size: 13.5px; line-height: 1.55; color: #3D4A41;">"G. Papanikolaou" General Hospital</span></div>
+              <div style="display: flex; align-items: flex-start; gap: 9px;"><span style="width: 5px; height: 5px; border-radius: 50%; background: #1B463A; margin-top: 7px; flex-shrink: 0;"></span><span style="font-size: 13.5px; line-height: 1.55; color: #3D4A41;">BSc Biology, Gene Therapy Research Department</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="popup-athens" class="cv-popcard-wrap" onmouseenter="if(hasHover())cancelClose()" onmouseleave="hoverLeave()" style="position: absolute; left: 48%; top: 61%; transform: translate(18px, -70%); z-index: 3; width: 248px;">
+        <div class="cv-popcard" style="position: relative; background: #FFFFFF; border-radius: 12px; overflow: hidden; box-shadow: 0 18px 36px rgba(20,40,32,0.22); text-align: left;">
+          <div style="height: 6px; background: linear-gradient(90deg, #1B463A, #7BAE9B);"></div>
+          <div style="padding: 18px 20px 20px;">
+            <button type="button" onclick="scheduleClose()" aria-label="Close" style="all: unset; cursor: pointer; position: absolute; top: 14px; right: 14px; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; border-radius: 50%; color: #8A968D; font-size: 13px; line-height: 1;">✕</button>
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px; padding-right: 18px;">
+              <svg width="15" height="15" viewBox="0 0 30 38" fill="none" style="flex-shrink: 0;"><path d="M15 0C6.7 0 0 6.7 0 15c0 10.5 15 23 15 23s15-12.5 15-23C30 6.7 23.3 0 15 0z" fill="#1B463A"></path><circle cx="15" cy="15" r="6" fill="#FFFFFF"></circle></svg>
+              <p style="margin: 0; font-family: 'Fraunces', serif; font-weight: 500; font-size: 17px; color: #1B463A;">Athens</p>
+            </div>
+            <p class="cv-eyebrow" style="margin: 0 0 12px; font-size: 10.5px; color: #8A968D;">Chapter Two</p>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <div style="display: flex; align-items: flex-start; gap: 9px;"><span style="width: 5px; height: 5px; border-radius: 50%; background: #1B463A; margin-top: 7px; flex-shrink: 0;"></span><span style="font-size: 13.5px; line-height: 1.55; color: #3D4A41;">NKUA Medical School</span></div>
+              <div style="display: flex; align-items: flex-start; gap: 9px;"><span style="width: 5px; height: 5px; border-radius: 50%; background: #1B463A; margin-top: 7px; flex-shrink: 0;"></span><span style="font-size: 13.5px; line-height: 1.55; color: #3D4A41;">BSRC "Alexander Fleming"</span></div>
+              <div style="display: flex; align-items: flex-start; gap: 9px;"><span style="width: 5px; height: 5px; border-radius: 50%; background: #1B463A; margin-top: 7px; flex-shrink: 0;"></span><span style="font-size: 13.5px; line-height: 1.55; color: #3D4A41;">Biomedical Research Foundation, Academy of Athens</span></div>
+              <div style="display: flex; align-items: flex-start; gap: 9px;"><span style="width: 5px; height: 5px; border-radius: 50%; background: #1B463A; margin-top: 7px; flex-shrink: 0;"></span><span style="font-size: 13.5px; line-height: 1.55; color: #3D4A41;">MSc Molecular Biomedicine</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEARCH EXPERIENCE -->
+  <section id="experience" class="cv-pad" style="width: 100%; box-sizing: border-box; max-width: 1120px; padding: 32px 40px 0;">
+    <p class="cv-eyebrow" style="margin: 0 0 10px; font-size: 12.5px; color: #1B463A;">Research History</p>
+    <h2 class="cv-h2" style="margin: 0 0 8px; font-family: 'Fraunces', serif; font-weight: 500; font-size: 32px; color: #1B463A;">Research Experience</h2>
+    <p style="margin: 0 0 36px; font-size: 15.5px; color: #5A6A5F; max-width: 600px;">Work carried out within research institutions — kept separate from independent projects below.</p>
+
+    <div class="cv-exp-grid" style="display: grid; grid-template-columns: 24px minmax(0,1fr); gap: 20px;">
+
+      <div id="exp-track" style="position: relative; width: 100%;">
+        <div style="position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; margin-left: -1px; background: rgba(27,70,58,0.14); border-radius: 2px;"></div>
+        <div id="expStopMarker0" style="position: absolute; left: 50%; top: 0%; width: 9px; height: 9px; margin-left: -4.5px; margin-top: -4.5px; border-radius: 50%; background: #FAF7F1; border: 2px solid rgba(27,70,58,0.3);"></div>
+        <div id="expStopMarker1" style="position: absolute; left: 50%; top: 50%; width: 9px; height: 9px; margin-left: -4.5px; margin-top: -4.5px; border-radius: 50%; background: #FAF7F1; border: 2px solid rgba(27,70,58,0.3);"></div>
+        <div id="expStopMarker2" style="position: absolute; left: 50%; top: 100%; width: 9px; height: 9px; margin-left: -4.5px; margin-top: -4.5px; border-radius: 50%; background: #FAF7F1; border: 2px solid rgba(27,70,58,0.3);"></div>
+        <div id="expFill" style="position: absolute; left: 50%; top: 0; width: 2px; margin-left: -1px; border-radius: 2px; background: #1B463A; height: 0%; transition: height 0.5s cubic-bezier(0.34,1.2,0.34,1);"></div>
+        <div id="expBall" style="position: absolute; left: 50%; top: 0%; width: 15px; height: 15px; margin-left: -7.5px; margin-top: -7.5px; border-radius: 50%; background: #1B463A; box-shadow: 0 0 0 4px #FAF7F1, 0 0 0 5px rgba(27,70,58,0.2); transition: top 0.5s cubic-bezier(0.34,1.2,0.34,1);"></div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 32px;">
+
+      <div class="cv-exp-entry" style="padding: 28px; border: 1px solid rgba(27,70,58,0.2); border-radius: 8px; background: #FFFFFF;">
+        <p class="cv-eyebrow" style="margin: 0 0 8px; font-size: 12px; color: #6B7A70;">2026 – Present</p>
+        <h3 style="margin: 0 0 4px; font-family: 'Fraunces', serif; font-weight: 500; font-size: 19px; color: #202A24;">Master's Thesis Researcher</h3>
+        <p style="margin: 0 0 14px; font-size: 14.5px; color: #5A6A5F;">Biomedical Research Foundation, Academy of Athens (BRFAA) — Dr D. Boumpas &amp; Dr A. Banos</p>
+        <p style="margin: 0 0 16px; font-size: 15.5px; line-height: 1.65; color: #3D4A41;">Inflammation &amp; autoimmunity research, experimental design, laboratory studies and data analysis.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+          <span class="cv-chip">Inflammation</span>
+          <span class="cv-chip">Autoimmunity</span>
+          <span class="cv-chip">Flow Cytometry</span>
+          <span class="cv-chip">Translational Research</span>
+          <span class="cv-chip">Mus musculus</span>
+        </div>
+      </div>
+
+      <div class="cv-exp-entry" style="padding: 28px; border: 1px solid rgba(27,70,58,0.2); border-radius: 8px; background: #FFFFFF;">
+        <p class="cv-eyebrow" style="margin: 0 0 8px; font-size: 12px; color: #6B7A70;">2026</p>
+        <h3 style="margin: 0 0 4px; font-family: 'Fraunces', serif; font-weight: 500; font-size: 19px; color: #202A24;">Research Intern</h3>
+        <p style="margin: 0 0 14px; font-size: 14.5px; color: #5A6A5F;">BSRC "Alexander Fleming" — Laboratory of Dr Efthimios Skoulakis</p>
+        <p style="margin: 0 0 16px; font-size: 15.5px; line-height: 1.65; color: #3D4A41;">Neurogenetics research — supported experiments and contributed to data collection and analysis.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+          <span class="cv-chip">Neurogenetics</span>
+          <span class="cv-chip">Behavioral Assays</span>
+          <span class="cv-chip">Memory &amp; Learning</span>
+          <span class="cv-chip">Drosophila melanogaster</span>
+        </div>
+      </div>
+
+      <div class="cv-exp-entry" style="padding: 28px; border: 1px solid rgba(27,70,58,0.2); border-radius: 8px; background: #FFFFFF;">
+        <p class="cv-eyebrow" style="margin: 0 0 8px; font-size: 12px; color: #6B7A70;">2024 – 2025</p>
+        <h3 style="margin: 0 0 4px; font-family: 'Fraunces', serif; font-weight: 500; font-size: 19px; color: #202A24;">BSc Thesis Researcher</h3>
+        <p style="margin: 0 0 14px; font-size: 14.5px; color: #5A6A5F;">"G. Papanikolaou" General Hospital of Thessaloniki, Gene &amp; Cell Therapy — Dr N. Psatha &amp; Dr E. Yannaki</p>
+        <p style="margin: 0 0 16px; font-size: 15.5px; line-height: 1.65; color: #3D4A41;">Gene &amp; cell therapy for Friedreich's ataxia — preclinical work using haematopoietic stem cells, optimising therapeutic FXN expression ex vivo via lentiviral vectors.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+          <span class="cv-chip">Gene Therapy</span>
+          <span class="cv-chip">Haematopoietic Stem Cells</span>
+          <span class="cv-chip">Friedreich's Ataxia</span>
+        </div>
+      </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education" class="cv-pad" style="width: 100%; box-sizing: border-box; max-width: 1120px; padding: 88px 40px 0;">
+    <p class="cv-eyebrow" style="margin: 0 0 10px; font-size: 12.5px; color: #1B463A;">Academic Formation</p>
+    <h2 class="cv-h2" style="margin: 0 0 36px; font-family: 'Fraunces', serif; font-weight: 500; font-size: 32px; color: #1B463A;">Education</h2>
+
+    <div style="display: flex; flex-direction: column;">
+      <div id="edu-msc" class="cv-row" style="display: grid; grid-template-columns: 160px 1fr; gap: 24px; padding: 24px 0; border-top: 1px solid rgba(32,42,36,0.15); scroll-margin-top: 90px;">
+        <p class="cv-eyebrow" style="margin: 0; font-size: 12px; color: #6B7A70;">2025 – Present</p>
+        <div>
+          <p style="margin: 0 0 4px; font-weight: 600; font-size: 18px; color: #202A24;">MSc in Molecular Biomedicine <span style="font-weight: 400; color: #6B7A70;">· 120 ECTS</span></p>
+          <p style="margin: 0; font-size: 15px; color: #3D4A41;">Medical School, National and Kapodistrian University of Athens, with BSRC "Alexander Fleming"</p>
+        </div>
+      </div>
+      <div id="edu-bsc" class="cv-row" style="display: grid; grid-template-columns: 160px 1fr; gap: 24px; padding: 24px 0; border-top: 1px solid rgba(32,42,36,0.15); border-bottom: 1px solid rgba(32,42,36,0.15); scroll-margin-top: 90px;">
+        <p class="cv-eyebrow" style="margin: 0; font-size: 12px; color: #6B7A70;">2021 – 2025</p>
+        <div>
+          <p style="margin: 0 0 4px; font-weight: 600; font-size: 18px; color: #202A24;">BSc in Biology <span style="font-weight: 400; color: #6B7A70;">· 240 ECTS</span></p>
+          <p style="margin: 0; font-size: 15px; color: #3D4A41;">Department of Biology, Aristotle University of Thessaloniki</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 40px;">
+      <p class="cv-eyebrow" style="margin: 0 0 20px; font-size: 12.5px; color: #1B463A;">Professional Development</p>
+      <div style="display: flex; flex-direction: column;">
+        <div class="cv-row" style="display: grid; grid-template-columns: 160px 1fr; gap: 24px; padding: 18px 0; border-top: 1px solid rgba(32,42,36,0.15);">
+          <p class="cv-eyebrow" style="margin: 0; font-size: 12px; color: #6B7A70;">2026 – Present</p>
+          <div>
+            <p style="margin: 0 0 4px; font-weight: 600; font-size: 15.5px; color: #202A24;">Johns Hopkins University, Whiting School of Engineering</p>
+            <p style="margin: 0; font-size: 14.5px; color: #3D4A41;">Applied Generative AI and Agentic AI</p>
+          </div>
+        </div>
+        <div class="cv-row" style="display: grid; grid-template-columns: 160px 1fr; gap: 24px; padding: 18px 0; border-top: 1px solid rgba(32,42,36,0.15);">
+          <p class="cv-eyebrow" style="margin: 0; font-size: 12px; color: #6B7A70;">2023</p>
+          <div>
+            <p style="margin: 0 0 4px; font-weight: 600; font-size: 15.5px; color: #202A24;">Harvard Medical School</p>
+            <p style="margin: 0; font-size: 14.5px; color: #3D4A41;">Pro Courses: Clinical Drug Development and Novel Therapies for Chronic Inflammation</p>
+          </div>
+        </div>
+        <div class="cv-row" style="display: grid; grid-template-columns: 160px 1fr; gap: 24px; padding: 18px 0; border-top: 1px solid rgba(32,42,36,0.15); border-bottom: 1px solid rgba(32,42,36,0.15);">
+          <p class="cv-eyebrow" style="margin: 0; font-size: 12px; color: #6B7A70;">2022</p>
+          <div>
+            <p style="margin: 0 0 4px; font-weight: 600; font-size: 15.5px; color: #202A24;">Harvard Medical School</p>
+            <p style="margin: 0; font-size: 14.5px; color: #3D4A41;">Fundamentals of Pharmacology and Fundamentals of Physiology</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="cv-pad" style="width: 100%; box-sizing: border-box; max-width: 1120px; padding: 88px 40px 0;">
+    <p class="cv-eyebrow" style="margin: 0 0 10px; font-size: 12.5px; color: #1B463A;">Independent &amp; Applied Work</p>
+    <h2 class="cv-h2" style="margin: 0 0 8px; font-family: 'Fraunces', serif; font-weight: 500; font-size: 32px; color: #1B463A;">Projects</h2>
+    <p style="margin: 0 0 36px; font-size: 15.5px; color: #5A6A5F; max-width: 620px;">Applied, computational and AI-driven work — distinct from institutional research positions above.</p>
+
+    <div style="border: 1px solid rgba(27,70,58,0.22); border-radius: 14px; overflow: hidden; background: #FFFFFF;">
+      <div style="padding: 40px; background: #1B463A; color: #FBF6EC;">
+        <p class="cv-eyebrow" style="margin: 0 0 10px; font-size: 12px; color: #CFE3DA;">AI · Digital Health · Clinical Decision Support</p>
+        <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 14px;">
+          <span style="display: flex; align-items: center; justify-content: center; width: 56px; height: 56px; border-radius: 10px; background: #FBF6EC; flex-shrink: 0; padding: 6px; box-sizing: border-box;">
+            <img src="assets/metabolia-logo.png" alt="Metabol-IA logo" style="width: 100%; height: 100%; object-fit: contain;">
+          </span>
+          <h3 style="margin: 0; font-family: 'Fraunces', serif; font-weight: 500; font-size: 30px;">Metabol&#8209;IA</h3>
+        </div>
+        <p style="margin: 0; font-size: 16px; line-height: 1.7; color: #E9F1EC; max-width: 720px;">A healthcare innovation project supporting more personalised approaches to metabolic disease through clinical data and AI-driven insight — from biomedical data to interpretable decision support.</p>
+      </div>
+      <div class="cv-projects-grid" style="padding: 40px; display: grid; grid-template-columns: minmax(0,1.3fr) minmax(0,1fr); gap: 40px;">
+        <div>
+          <p style="margin: 0 0 20px; font-size: 16px; line-height: 1.7; color: #2C382F;">An AI-powered clinical decision-support concept using machine-learning methods to transform biological and clinical inputs into interpretable predictions. The project combines predictive modelling with explainability, keeping the reasoning behind model outputs visible.</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+            <span class="cv-chip">Python</span>
+            <span class="cv-chip">XGBoost</span>
+            <span class="cv-chip">SHAP</span>
+            <span class="cv-chip">Clinical Decision Support</span>
+          </div>
+        </div>
+        <div class="cv-projects-side" style="border-left: 1px solid rgba(27,70,58,0.15); padding-left: 32px;">
+          <p class="cv-eyebrow" style="margin: 0 0 16px; font-size: 12px; color: #1B463A;">Presented At</p>
+          <div style="display: flex; flex-direction: column; gap: 0;">
+            <div style="display: flex; gap: 12px;">
+              <div style="display: flex; flex-direction: column; align-items: center;">
+                <span style="width: 9px; height: 9px; border-radius: 50%; background: #1B463A;"></span>
+                <span style="width: 1px; flex-grow: 1; background: rgba(27,70,58,0.25); min-height: 30px;"></span>
+              </div>
+              <div style="padding-bottom: 20px;">
+                <p style="margin: 0; font-weight: 600; font-size: 15px; color: #202A24;">Panathēnea 2026</p>
+                <p style="margin: 0; font-size: 13.5px; color: #6B7A70;">Athens · Innovation &amp; technology ecosystem</p>
+              </div>
+            </div>
+            <div style="display: flex; gap: 12px;">
+              <div style="display: flex; flex-direction: column; align-items: center;">
+                <span style="width: 9px; height: 9px; border-radius: 50%; background: #1B463A;"></span>
+              </div>
+              <div>
+                <p style="margin: 0; font-weight: 600; font-size: 15px; color: #202A24;">BEYOND Expo 2026</p>
+                <p style="margin: 0 0 4px; font-size: 13.5px; color: #6B7A70;">Athens · Presented in the Ε.Β.Ε.Α. / ACCI ecosystem</p>
+                <p style="margin: 0; font-size: 13px; color: #6B7A70; font-style: italic;">Presented to Ε.Β.Ε.Α. — Athens Chamber of Commerce and Industry</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 24px; padding: 32px; border: 1.5px dashed rgba(27,70,58,0.3); border-radius: 14px; text-align: center;">
+      <p style="margin: 0; font-size: 15px; color: #6B7A70;">More computational &amp; AI projects — coming soon</p>
+    </div>
+  </section>
+
+  <!-- AWARDS & PRESENTATIONS -->
+  <section id="awards" class="cv-pad" style="width: 100%; box-sizing: border-box; max-width: 1120px; padding: 88px 40px 0;">
+    <p class="cv-eyebrow" style="margin: 0 0 10px; font-size: 12.5px; color: #1B463A;">Scholarly Output</p>
+    <h2 class="cv-h2" style="margin: 0 0 36px; font-family: 'Fraunces', serif; font-weight: 500; font-size: 32px; color: #1B463A;">Awards &amp; Selected Presentations</h2>
+    <div style="display: flex; flex-direction: column;">
+      <div class="cv-row" style="display: grid; grid-template-columns: 160px 1fr; gap: 24px; padding: 22px 0; border-top: 1px solid rgba(32,42,36,0.15);">
+        <p class="cv-eyebrow" style="margin: 0; font-size: 12px; color: #6B7A70;">12/2024</p>
+        <div>
+          <p style="margin: 0 0 4px; font-weight: 600; font-size: 16px; color: #202A24;">74th National Conference, Hellenic Society for Biochemistry &amp; Molecular Biology — Poster Presentation Award</p>
+          <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #3D4A41;">Exploring haematopoietic stem cells for therapeutic FXN expression in Friedreich's ataxia: a gene therapy approach</p>
+        </div>
+      </div>
+      <div class="cv-row" style="display: grid; grid-template-columns: 160px 1fr; gap: 24px; padding: 22px 0; border-top: 1px solid rgba(32,42,36,0.15);">
+        <p class="cv-eyebrow" style="margin: 0; font-size: 12px; color: #6B7A70;">06/2025</p>
+        <div>
+          <p style="margin: 0 0 4px; font-weight: 600; font-size: 16px; color: #202A24;">16th FELASA Congress</p>
+          <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #3D4A41;">Utilising haematopoietic stem cells for controlled FXN expression as gene therapy for Friedreich's ataxia</p>
+        </div>
+      </div>
+      <div class="cv-row" style="display: grid; grid-template-columns: 160px 1fr; gap: 24px; padding: 22px 0; border-top: 1px solid rgba(32,42,36,0.15); border-bottom: 1px solid rgba(32,42,36,0.15);">
+        <p class="cv-eyebrow" style="margin: 0; font-size: 12px; color: #6B7A70;">05/2025</p>
+        <div>
+          <p style="margin: 0 0 4px; font-weight: 600; font-size: 16px; color: #202A24;">31st Biennial Meeting, ESN – HSN — Poster Presenter</p>
+          <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #3D4A41;">Targeting Friedreich's ataxia: therapeutic FXN expression via haematopoietic stem cell-based gene therapy</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 40px;">
+      <p class="cv-eyebrow" style="margin: 0 0 20px; font-size: 12.5px; color: #1B463A;">Volunteering</p>
+      <div class="cv-row" style="display: grid; grid-template-columns: 160px 1fr; gap: 24px; padding: 22px 0; border-top: 1px solid rgba(32,42,36,0.15); border-bottom: 1px solid rgba(32,42,36,0.15);">
+        <p class="cv-eyebrow" style="margin: 0; font-size: 12px; color: #6B7A70;">07/2026</p>
+        <div>
+          <p style="margin: 0 0 4px; font-weight: 600; font-size: 16px; color: #202A24;">Quality Assurance Supervisor — International Biology Olympiad (IBO)</p>
+          <p style="margin: 0; font-size: 15px; color: #3D4A41;">Vilnius University, Lithuania</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="cv-pad" style="width: 100%; box-sizing: border-box; max-width: 1120px; padding: 88px 40px 0;">
+    <p class="cv-eyebrow" style="margin: 0 0 10px; font-size: 12.5px; color: #1B463A;">Technical Expertise</p>
+    <h2 class="cv-h2" style="margin: 0 0 36px; font-family: 'Fraunces', serif; font-weight: 500; font-size: 32px; color: #1B463A;">Skills</h2>
+
+    <div class="cv-skills-grid" style="display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 24px;">
+      <div class="cv-skill-card" style="padding: 24px; border: 1px solid rgba(27,70,58,0.18); border-radius: 10px; background: #FFFFFF; animation-delay: 0s;">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
+          <span class="cv-skill-icon" style="display: flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 8px; background: rgba(27,70,58,0.08); flex-shrink: 0;">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1B463A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          </span>
+          <p style="margin: 0; font-family: 'Fraunces', serif; font-size: 16px; font-weight: 500; color: #202A24;">Scientific &amp; Analytical</p>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+          <span class="cv-chip">Biomedical Research</span>
+          <span class="cv-chip">Literature Review</span>
+          <span class="cv-chip">Data Interpretation</span>
+          <span class="cv-chip">Scientific Communication</span>
+          <span class="cv-chip">Presentation Development</span>
+        </div>
+      </div>
+      <div class="cv-skill-card" style="padding: 24px; border: 1px solid rgba(27,70,58,0.18); border-radius: 10px; background: #FFFFFF; animation-delay: 0.1s;">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
+          <span class="cv-skill-icon" style="display: flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 8px; background: rgba(27,70,58,0.08); flex-shrink: 0;">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1B463A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2v6.5L4 19a2 2 0 0 0 1.8 3h12.4a2 2 0 0 0 1.8-3l-5-10.5V2"></path><line x1="8" y1="2" x2="16" y2="2"></line><line x1="8.5" y1="13" x2="15.5" y2="13"></line></svg>
+          </span>
+          <p style="margin: 0; font-family: 'Fraunces', serif; font-size: 16px; font-weight: 500; color: #202A24;">Laboratory</p>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+          <span class="cv-chip">Cell Culture</span>
+          <span class="cv-chip">RT-qPCR</span>
+          <span class="cv-chip">Western Blot</span>
+          <span class="cv-chip">Flow Cytometry</span>
+          <span class="cv-chip">Immunofluorescence Microscopy</span>
+        </div>
+      </div>
+      <div class="cv-skill-card" style="padding: 24px; border: 1px solid rgba(27,70,58,0.18); border-radius: 10px; background: #FFFFFF; animation-delay: 0.2s;">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
+          <span class="cv-skill-icon" style="display: flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 8px; background: rgba(27,70,58,0.08); flex-shrink: 0;">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1B463A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="2"></rect><line x1="3" y1="9" x2="6" y2="9"></line><line x1="3" y1="15" x2="6" y2="15"></line><line x1="18" y1="9" x2="21" y2="9"></line><line x1="18" y1="15" x2="21" y2="15"></line><line x1="9" y1="3" x2="9" y2="6"></line><line x1="15" y1="3" x2="15" y2="6"></line><line x1="9" y1="18" x2="9" y2="21"></line><line x1="15" y1="18" x2="15" y2="21"></line></svg>
+          </span>
+          <p style="margin: 0; font-family: 'Fraunces', serif; font-size: 16px; font-weight: 500; color: #202A24;">Digital, Data &amp; AI</p>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+          <span class="cv-chip">Python</span>
+          <span class="cv-chip">R</span>
+          <span class="cv-chip">XGBoost</span>
+          <span class="cv-chip">SHAP</span>
+          <span class="cv-chip">Excel</span>
+          <span class="cv-chip">PowerPoint</span>
+          <span class="cv-chip">ImageJ / FIJI</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 32px; display: flex; flex-wrap: wrap; gap: 16px;">
+      <div class="cv-lang-badge" style="padding: 14px 24px; border: 1px solid rgba(27,70,58,0.25); border-radius: 6px; background: #FFFFFF; animation-delay: 0.3s; display: flex; align-items: center; gap: 14px;">
+        <svg width="30" height="21" viewBox="0 0 30 21" style="flex-shrink: 0; border-radius: 3px; overflow: hidden; box-shadow: 0 0 0 1px rgba(0,0,0,0.08);">
+          <rect width="30" height="21" fill="#0D5EAF"></rect>
+          <rect y="0" width="30" height="2.33" fill="#FFFFFF"></rect>
+          <rect y="4.67" width="30" height="2.33" fill="#FFFFFF"></rect>
+          <rect y="9.33" width="30" height="2.33" fill="#FFFFFF"></rect>
+          <rect y="14" width="30" height="2.33" fill="#FFFFFF"></rect>
+          <rect y="18.67" width="30" height="2.33" fill="#FFFFFF"></rect>
+          <rect x="0" y="0" width="11.67" height="11.67" fill="#0D5EAF"></rect>
+          <rect x="4.67" y="0" width="2.33" height="11.67" fill="#FFFFFF"></rect>
+          <rect x="0" y="4.67" width="11.67" height="2.33" fill="#FFFFFF"></rect>
+        </svg>
+        <div>
+          <p style="margin: 0; font-weight: 600; font-size: 15px; color: #202A24;">Greek</p>
+          <p style="margin: 0; font-size: 13.5px; color: #6B7A70;">Mother tongue · Native</p>
+        </div>
+      </div>
+      <div class="cv-lang-badge" style="padding: 14px 24px; border: 1px solid rgba(27,70,58,0.25); border-radius: 6px; background: #FFFFFF; animation-delay: 0.37s; display: flex; align-items: center; gap: 14px;">
+        <svg width="30" height="21" viewBox="0 0 30 21" style="flex-shrink: 0; border-radius: 3px; overflow: hidden; box-shadow: 0 0 0 1px rgba(0,0,0,0.08);">
+          <rect width="30" height="21" fill="#0A2C6B"></rect>
+          <polygon points="0,0 30,21 30,17 6,0" fill="#FFFFFF"></polygon>
+          <polygon points="30,0 0,21 0,17 24,0" fill="#FFFFFF"></polygon>
+          <polygon points="0,0 30,21 30,19 3,0" fill="#C8102E"></polygon>
+          <polygon points="30,0 0,21 0,19 27,0" fill="#C8102E"></polygon>
+          <rect x="12" y="0" width="6" height="21" fill="#FFFFFF"></rect>
+          <rect y="7.5" width="30" height="6" fill="#FFFFFF"></rect>
+          <rect x="13.2" y="0" width="3.6" height="21" fill="#C8102E"></rect>
+          <rect y="8.7" width="30" height="3.6" fill="#C8102E"></rect>
+        </svg>
+        <div>
+          <p style="margin: 0; font-weight: 600; font-size: 15px; color: #202A24;">English</p>
+          <p style="margin: 0; font-size: 13.5px; color: #6B7A70;">Cambridge CAE · C1</p>
+        </div>
+      </div>
+      <div class="cv-lang-badge" style="padding: 14px 24px; border: 1px solid rgba(27,70,58,0.25); border-radius: 6px; background: #FFFFFF; animation-delay: 0.44s; display: flex; align-items: center; gap: 14px;">
+        <svg width="30" height="21" viewBox="0 0 30 21" style="flex-shrink: 0; border-radius: 3px; overflow: hidden; box-shadow: 0 0 0 1px rgba(0,0,0,0.08);">
+          <rect width="10" height="21" fill="#0055A4"></rect>
+          <rect x="10" width="10" height="21" fill="#FFFFFF"></rect>
+          <rect x="20" width="10" height="21" fill="#EF4135"></rect>
+        </svg>
+        <div>
+          <p style="margin: 0; font-weight: 600; font-size: 15px; color: #202A24;">French</p>
+          <p style="margin: 0; font-size: 13.5px; color: #6B7A70;">DELF · B1</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" style="width: 100%; box-sizing: border-box; margin-top: 96px; background: #1B463A; color: #FBF6EC;">
+    <div class="cv-pad" style="max-width: 1120px; margin: 0 auto; box-sizing: border-box; padding: 72px 40px; display: flex; flex-direction: column; gap: 20px; align-items: flex-start;">
+      <p class="cv-eyebrow" style="margin: 0; font-size: 12.5px; color: #CFE3DA;">Get in Touch</p>
+      <h2 style="margin: 0; font-family: 'Fraunces', serif; font-weight: 500; font-size: 32px; max-width: 560px;">Let's talk science &amp; biomedical AI</h2>
+      <p style="margin: 0; font-size: 16.5px; line-height: 1.7; color: #E9F1EC; max-width: 600px;">Open to conversations about research collaborations, industry projects and opportunities across the biopharmaceutical sector.</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 14px; margin-top: 8px;">
+        <span style="position: relative; display: inline-flex;">
+          <a class="cv-btn" href="mailto:erricanc@gmail.com" onclick="copyEmail(event)" style="background: #FBF6EC; color: #1B463A;">erricanc@gmail.com</a>
+          <span class="cv-toast" style="position: absolute; left: 50%; bottom: calc(100% + 10px); transform: translateX(-50%); white-space: nowrap; background: #1B463A; color: #FBF6EC; font-size: 12.5px; font-weight: 500; padding: 7px 12px; border-radius: 6px; box-shadow: 0 8px 16px rgba(0,0,0,0.25); pointer-events: none;">Email copied to clipboard</span>
+        </span>
+        <a class="cv-btn" href="https://linkedin.com/in/errica-nianiakoudi-cohen" target="_blank" rel="noopener" style="background: transparent; color: #FBF6EC; border: 1px solid rgba(251,246,236,0.5);">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="width: 100%; box-sizing: border-box;">
+    <div class="cv-pad" style="max-width: 1120px; margin: 0 auto; box-sizing: border-box; padding: 28px 40px 56px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 13.5px; color: #6B7A70;">
+      <span>© 2026 Errica Nianiakoudi&#8209;Cohen · Athens, Greece</span>
+      <span>Biologist · MSc Candidate in Molecular Biomedicine</span>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  // ---- Nav hamburger menu ----
+  var menuOpen = false;
+  function toggleMenu() {
+    menuOpen = !menuOpen;
+    document.getElementById('navLinks').classList.toggle('cv-nav-open', menuOpen);
+  }
+  function closeMenu() {
+    menuOpen = false;
+    document.getElementById('navLinks').classList.remove('cv-nav-open');
+  }
+
+  // ---- Email copy + toast ----
+  function copyEmail(e) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText('erricanc@gmail.com').catch(function () {});
+    }
+    document.querySelectorAll('.cv-toast').forEach(function (t) {
+      t.classList.remove('cv-toast-show');
+      clearTimeout(t._t);
+    });
+    var toast = e.currentTarget.parentElement.querySelector('.cv-toast');
+    if (toast) {
+      toast.classList.add('cv-toast-show');
+      toast._t = setTimeout(function () { toast.classList.remove('cv-toast-show'); }, 2200);
+    }
+  }
+
+  // ---- Map popups ----
+  var openCity = null;
+  var closeTimer = null;
+
+  function hasHover() {
+    return window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  }
+  function hoverOpen(city) { if (hasHover()) openPopup(city); }
+  function hoverLeave() { if (hasHover()) scheduleClose(); }
+
+  function openPopup(city) {
+    if (closeTimer) { clearTimeout(closeTimer); closeTimer = null; }
+    document.querySelectorAll('.cv-popcard-wrap').forEach(function (el) {
+      if (el.id !== 'popup-' + city) { el.classList.remove('cv-popcard-visible'); el.style.display = 'none'; }
+    });
+    var el = document.getElementById('popup-' + city);
+    if (el) {
+      var card = el.querySelector('.cv-popcard');
+      card.classList.remove('cv-pop-out');
+      el.style.display = 'block';
+      el.classList.add('cv-popcard-visible');
+      card.style.animation = 'none';
+      void card.offsetHeight;
+      card.style.animation = '';
+    }
+    openCity = city;
+  }
+
+  function scheduleClose() {
+    if (!openCity) return;
+    var city = openCity;
+    var el = document.getElementById('popup-' + city);
+    if (el) el.querySelector('.cv-popcard').classList.add('cv-pop-out');
+    closeTimer = setTimeout(function () {
+      if (el) { el.style.display = 'none'; el.classList.remove('cv-popcard-visible'); }
+      if (openCity === city) openCity = null;
+      closeTimer = null;
+    }, 180);
+  }
+
+  function cancelClose() {
+    if (closeTimer) { clearTimeout(closeTimer); closeTimer = null; }
+    if (openCity) {
+      var el = document.getElementById('popup-' + openCity);
+      if (el) el.querySelector('.cv-popcard').classList.remove('cv-pop-out');
+    }
+  }
+
+  function togglePopup(city) {
+    if (openCity === city) { scheduleClose(); } else { openPopup(city); }
+  }
+
+  // ---- Research Experience scroll track ----
+  var expActiveIndex = 0;
+  var expStops = [0, 50, 100];
+  var resizeTimer = null;
+
+  function applyExpUI() {
+    var pct = expStops[expActiveIndex] != null ? expStops[expActiveIndex] : 0;
+    var fill = document.getElementById('expFill');
+    var ball = document.getElementById('expBall');
+    if (fill) fill.style.height = pct + '%';
+    if (ball) ball.style.top = pct + '%';
+    for (var i = 0; i < 3; i++) {
+      var m = document.getElementById('expStopMarker' + i);
+      if (m && expStops[i] != null) m.style.top = expStops[i] + '%';
+    }
+  }
+
+  function measureStops() {
+    var track = document.getElementById('exp-track');
+    var entries = document.querySelectorAll('#experience .cv-exp-entry');
+    if (!track || !entries.length) return;
+    var trackRect = track.getBoundingClientRect();
+    if (trackRect.height <= 0) return;
+    var stops = [];
+    for (var i = 0; i < entries.length; i++) {
+      var r = entries[i].getBoundingClientRect();
+      var centerPx = (r.top + r.height / 2) - trackRect.top;
+      stops.push(Math.max(0, Math.min(100, (centerPx / trackRect.height) * 100)));
+    }
+    expStops = stops;
+    applyExpUI();
+  }
+
+  function handleExpScroll() {
+    var entries = document.querySelectorAll('#experience .cv-exp-entry');
+    if (!entries.length) return;
+    var vh = window.innerHeight || 800;
+    var triggerY = vh * 0.45;
+    var closestIdx = 0;
+    var closestDist = Infinity;
+    for (var i = 0; i < entries.length; i++) {
+      var r = entries[i].getBoundingClientRect();
+      var center = r.top + r.height / 2;
+      var dist = Math.abs(center - triggerY);
+      if (dist < closestDist) { closestDist = dist; closestIdx = i; }
+    }
+    var firstRect = entries[0].getBoundingClientRect();
+    if (firstRect.top > triggerY) closestIdx = 0;
+    var lastRect = entries[entries.length - 1].getBoundingClientRect();
+    if (lastRect.top + lastRect.height < triggerY) closestIdx = entries.length - 1;
+    if (closestIdx !== expActiveIndex) {
+      expActiveIndex = closestIdx;
+      applyExpUI();
+    }
+  }
+
+  window.addEventListener('scroll', handleExpScroll, { passive: true });
+  window.addEventListener('resize', function () {
+    if (resizeTimer) clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(measureStops, 150);
+  });
+  window.addEventListener('DOMContentLoaded', function () {
+    measureStops();
+    handleExpScroll();
+    setTimeout(measureStops, 300);
+  });
+</script>
+</body>
+</html>
